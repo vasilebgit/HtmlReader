@@ -1,36 +1,136 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+HTML Reader
 
-## Getting Started
+O aplicație full-stack realizată cu Next.js, TypeScript și Material UI pentru extragerea de informații din conținut HTML folosind regex.
 
-First, run the development server:
+Caracteristici
+	•	Permite utilizatorului să introducă conținut HTML într-un formular.
+	•	Extrage automat informații precum:
+	•	Titlu (<title>)
+	•	Meta descriere (<meta name="description">)
+	•	Link-uri (<a href="...">)
+	•	Imagini (<img src="...">)
+	•	Conținut dintre tag-uri personalizate specificate (ex.: <p>, <div>, etc.).
+	•	Afișează rezultatele într-o interfață modernă și responsivă folosind Material UI.
 
-```bash
+Structura Proiectului
+
+html-reader/
+├─ src/
+│  ├─ pages/
+│  │  ├─ index.tsx        // Pagina principală cu UI
+│  │  ├─ _app.tsx         // Custom App pentru Next.js, cu ThemeProvider
+│  │  └─ api/
+│  │     └─ extract.ts    // Endpoint API pentru procesarea HTML-ului
+│  ├─ lib/
+│  │  ├─ regexExtractors.ts // Funcții helper pentru regex
+│  │  ├─ theme.ts           // Tema MUI
+│  │  └─ types.ts           // Definiții de tipuri TypeScript
+│  ├─ styles/
+│  │  └─ globals.css        // Stiluri globale
+│  └─ public/
+│     └─ favicon.ico        // Resurse statice opționale
+├─ tsconfig.json
+├─ package.json
+└─ README.md                // Documentația proiectului
+
+Tehnologii Utilizate
+	•	Framework Front-End/Back-End: Next.js
+	•	Limbaj: TypeScript
+	•	UI Library: Material UI
+	•	Regex: Folosit pentru extragerea datelor din HTML
+
+Instalare și Rulare
+	1.	Clonarea proiectului
+Clonează acest repository local:
+
+git clone https://github.com/username/html-reader.git
+cd html-reader
+
+
+	2.	Instalarea dependențelor
+Rulează comanda:
+
+npm install
+
+
+	3.	Rularea aplicației local
+Lansează serverul de dezvoltare:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Aplicația va fi disponibilă la:
+http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+	4.	Build pentru producție
+Pentru a crea un build de producție:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+npm run build
+npm start
 
-## Learn More
+Cum Funcționează?
+	1.	Introdu HTML-ul
+Utilizatorul introduce conținut HTML în formularul oferit.
+	2.	Extragerea Datelor
+La apăsarea butonului “Analizează”, aplicația trimite o cerere POST către API-ul intern /api/extract.
+	3.	Procesarea Backend
+Endpoint-ul /api/extract procesează conținutul HTML folosind regex pentru a extrage:
+	•	Titlu
+	•	Meta descriere
+	•	Link-uri
+	•	Imagini
+	•	Conținutul dintre tag-uri personalizate.
+	4.	Afișarea Rezultatelor
+Rezultatele sunt afișate într-o interfață ordonată, folosind componente Material UI.
 
-To learn more about Next.js, take a look at the following resources:
+Exemple de Input/Output
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Input:
+HTML introdus de utilizator:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pagina de Test</title>
+    <meta name="description" content="Aceasta este o meta descriere.">
+  </head>
+  <body>
+    <a href="https://example.com">Link 1</a>
+    <img src="image1.jpg" />
+    <div>Conținut într-un div.</div>
+  </body>
+</html>
 
-## Deploy on Vercel
+Output:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Titlu: Pagina de Test
+Meta Descriere: Aceasta este o meta descriere.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Link-uri:
+- https://example.com
+
+Imagini:
+- image1.jpg
+
+Conținut pentru <div>:
+- Conținut într-un div.
+
+Extensii și Îmbunătățiri Opționale
+	•	Adaugă validări pentru a verifica dacă HTML-ul introdus este corect.
+	•	Adaugă notificări (ex.: Snackbar din MUI) pentru a indica erori sau succes.
+	•	Extinde regex-urile pentru a extrage și alte elemente (script-uri, style-uri, etc.).
+	•	Integrează teste unitare folosind Jest.
+
+Probleme Frecvente
+	•	Eroare “Cannot find module”
+Asigură-te că:
+	•	baseUrl și paths sunt configurate corect în tsconfig.json.
+	•	Ai repornit serverul (npm run dev) după modificări.
+	•	Rezultatele sunt goale
+Verifică sintaxa HTML-ului introdus. Asigură-te că tag-urile sunt închise corect.
+
+Autor
+
+Proiect dezvoltat de Vasile Bordei.
+Contact: vasilebordei@student.usv.ro
+
+🎉 Spor la codare!
