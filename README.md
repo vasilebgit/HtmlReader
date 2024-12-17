@@ -128,9 +128,17 @@ Asigură-te că:
 	•	Rezultatele sunt goale
 Verifică sintaxa HTML-ului introdus. Asigură-te că tag-urile sunt închise corect.
 
+Contribuții
+
+Pull request-urile sunt binevenite. Te rog să deschizi un issue pentru discuții înainte de a începe modificări majore.
+
+Licență
+
+Acest proiect este sub licență MIT.
+
 Autor
 
 Proiect dezvoltat de Vasile Bordei.
-Contact: vasilebordei@student.usv.ro
+Contact: vasilebordei@example.com
 
 🎉 Spor la codare!
